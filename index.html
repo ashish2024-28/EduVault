@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduVault - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+  <style>
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      gap: 18px;
+      letter-spacing: 2px;
+    }
+
+    .logo img{
+        width: 50px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        box-shadow: 0.3s ease;
+    }
+
+    .logo img:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(187, 174, 174, 0.7);
+        cursor: pointer;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+.hero-bg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+
+    opacity: 0.3;
+
+}
+
+.hero-bg img{
+    width: 600px;
+    /* height: auto; */
+    border-radius: 50%;
+}
+
+.hero h1,
+.hero p{
+    position: relative;
+    z-index: 1;
+}
+
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      /* padding: 50px; */
+      flex-direction: column;
+      color: white;
+      background: url('https://images.unsplash.com/photo-1581091870622-8d9d7b5cf9da') no-repeat center/cover;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-top: 15px;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .corner-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .corner {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .corner:hover {
+      transform: translateY(-10px);
+      background: #f0f8ff;
+    }
+
+    .corner i {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #4CAF50;
+    }
+
+    #admin{
+      margin: auto;
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .contact {
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      margin: 5px 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+
+    
+@media screen and (max-width: 800px) {
+  /* Navigation ko hide kar diya hai jaise aapne likha */
+  .nav {
+    display: none;
+  }
+  
+  /* Hero image thoda chhota */
+  .hero-bg img {
+    width: 350px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .corner-container {
+    grid-template-columns: 1fr; /* ek column me cards */
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  /* Hero image aur bhi chhoti */
+  .hero-bg img {
+    width: 220px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .logo img {
+    width:40px;
+}
+}
+
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"><img src="items/logo.jpg" alt="img"> EduVault</div>
+    <nav class="nav" >
+      <a href="#home"><i class="fa fa-home"></i> Home</a>
+      <a href="#students"><i class="fa fa-user-graduate"></i> Students</a>
+      <a href="#teachers"><i class="fa fa-chalkboard-teacher"></i> Teachers</a>
+      <a href="#Admin"><i class="fa fa-user-shield"></i> Admin</a>
+      <a href="#about"><i class="fa fa-info-circle"></i> About</a>
+      <a href="#contact"><i class="fa fa-envelope"></i> Connect</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+        <img src="items/logo.jpg" alt="">
+    </div>
+    <h1>Welcome to EduVault</h1>
+    <p>Your Digital Vault for Education Excellence</p>
+  </section>
+
+  <!-- Student & Teacher Corner -->
+  <section id="students">
+    <h2>Student & Teacher Corner</h2>
+    <div class="corner-container">
+      <div class="corner" onclick="Student()">
+        <i class="fa fa-user-graduate"></i>
+        <h3>Students Corner</h3>
+        <p >Find resources, assignments, results, and learning materials designed to help you excel in your academic journey.</p>
+      </div>
+      <div class="corner" id="teachers" onclick="Teacher()" >
+        <i class="fa fa-chalkboard-teacher"></i>
+        <h3>Teachers Corner</h3>
+        <p>Access teaching tools, manage student records, and collaborate with peers for enhanced learning experiences.</p>
+      </div>
+      <div class="corner" id="Admin" onclick="Admin()" >
+        <i class="fas fa-user-shield"></i>
+        
+        <h3>Admin Corner</h3>
+        <p>Access Admin tools, manage faculty and student records, and collaborate with peers for enhanced learning experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About EduVault</h2>
+    <p>EduVault is a one-stop digital platform bridging students and teachers. We aim to simplify education management with modern tools, resources, and technology-driven solutions.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="contact">
+      <h3>Connect With Us</h3>
+      <p><i class="fa fa-envelope"></i> Email: support@eduvault.com</p>
+      <p><i class="fa fa-phone"></i> Phone: ‪+91 9876543210‬</p>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 EduVault. All Rights Reserved.</p>
+  </footer>
+
+  <!-- add js file -->
+  
+  <script src="CommonFolder/LoginPage/StoreData.js"></script>
+  
+  <script >
+
+function Student(){
+        window.location.href = "loginPage.html";
+}
+function Teacher(){
+        window.location.href = "loginPage.html";
+}
+function Admin(){
+        window.location.href = "AdminLogin.html";
+}
+
+  </script>
+
+
+</body>
+</html>
+

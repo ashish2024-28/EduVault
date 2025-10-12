@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- link css file -->
+     <link rel="stylesheet" href="CommonFolder/LoginPage/common.css">
+
+     <style>
+
+.blank-box {
+    width: 100%;
+    height: 50px; /* Blank box ki height */
+    background-color: #f0f0f0; /* Blank box ka color */
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.input-field {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 24px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+.input-field:hover{  transform: scale(1.07); }
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.create-account {
+    display: block;
+    margin-top: 15px;
+    color: #ff0015; /* Blue color */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.create-account:hover {
+    text-decoration: underline
+}
+
+
+
+
+     </style>
+
+</head>
+<body>
+
+<div class="container">
+        <div class="circle">
+            <img id="imgLogo" src="" alt="">
+        </div>
+
+    
+        <input id="loginEmail" type="email" name="Email" placeholder="Enter Email" class="input-field"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autofocus required >
+
+        <input id="loginPassword" type="password" name="Password" placeholder="Enter Password" class="input-field" required minlength="6" >
+
+        <button class="login-button" onclick="return checkLogin()">Login</button>
+
+        <a href="CommonFolder/ForgotPass/Forgot.html" class="forgot-password">Forgot Password?</a>
+        <a href="NewUser.html"class="Create account">Create account</a>
+    </div>
+
+    <!-- link js file -->
+     
+    <script src="CommonFolder/LoginPage/common.js"></script>
+    
+
+    <script>
+        // Agar student login hai
+        localStorage.setItem("studentUser", JSON.stringify(studentData));
+        // Agar faculty login hai
+        localStorage.setItem("facultyUser", JSON.stringify(facultyData));
+
+    </script>
+
+</body>
+</html>

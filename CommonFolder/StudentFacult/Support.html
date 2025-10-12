@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eduvalt Support</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      letter-spacing: 2px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      width: 90%;
+      max-width: 900px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .faq-section h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .faq {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+
+    .faq h3 {
+      font-size: 18px;
+      margin: 0;
+      color: #2575fc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq h3::after {
+      content: "+";
+      font-size: 20px;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+
+    .faq.active h3::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .faq p {
+      margin: 10px 0 0;
+      font-size: 15px;
+      color: #555;
+      display: none;
+    }
+
+    .faq.active p {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Custom Question Box */
+    .question-box {
+      width: 90%;
+      max-width: 900px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .question-box h2 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: none;
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: block;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: auto;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">EDUVALT SUPPORT</div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <h3>🔑 How do I reset my password?</h3>
+      <p>Click on "Forgot Password" at login, enter your email, and follow the reset link sent to you.</p>
+    </div>
+
+    <div class="faq">
+      <h3>📂 How do I upload my certificate?</h3>
+      <p>Go to your dashboard → Upload Section → Select File → Click Submit.</p>
+    </div>
+
+    <div class="faq">
+      <h3>📝 Can I edit my submitted information?</h3>
+      <p>Yes, you can edit your profile and re-upload certificates before final approval.</p>
+    </div>
+
+    <div class="faq">
+      <h3>📧 How will I know if my certificate is approved?</h3>
+      <p>You will get an email notification and a status update in your dashboard.</p>
+    </div>
+
+    <div class="faq">
+      <h3>👤 Can I change my department details later?</h3>
+      <p>Yes, contact your admin with valid proof to update department details.</p>
+    </div>
+
+    <div class="faq">
+      <h3>⚠ What if I face technical issues?</h3>
+      <p>Contact our support team via email at <b>support@eduvalt.com</b>.</p>
+    </div>
+  </div>
+
+  <!-- Custom Question Box -->
+  <div class="question-box">
+    <h2>Have a Special Question?</h2>
+    <form>
+      <textarea placeholder="Type your question here..."></textarea>
+      <button type="submit">Send Question</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 EDUVALT | Support & Helpdesk
+  </footer>
+
+  <script>
+    // FAQ accordion toggle
+    const faqs = document.querySelectorAll('.faq');
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        faq.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Users</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background:#f7f7f7 }
+    table { border-collapse: collapse; width: 100%; background:white; margin-bottom: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #333; color: white; }
+    .controls { margin-bottom: 12px; }
+    button { padding: 6px 10px; margin-right:6px; cursor:pointer }
+    .small { font-size: 12px; padding:4px 6px }
+  </style>
+</head>
+<body>
+  <h2>Admin - User Management</h2>
+
+  <div class="controls">
+    <span id="totalUsers" >Total users: 0</span>
+    <button onclick="refreshUsers()">Refresh</button>
+    <button onclick="exportJSON()">Export JSON</button>
+    <button onclick="exportCSV()">Export CSV</button>
+    <button onclick="clearAllUsers()" style="background:#d9534f;color:white">Clear All Users</button>
+  </div>
+
+  <h3>👨‍🎓 Students</h3>
+  <div id="studentTable"></div>
+
+  <h3>👨‍🏫 Faculty</h3>
+  <div id="facultyTable"></div>
+  
+</body>
+</html>
+
+<!-- Admin.js -->
+
+<script>
+  // Get all users
+function getUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+
+// Refresh tables
+function refreshUsers() {
+  const users = getUsers();
+  document.getElementById('totalUsers').innerText = `Total users: ${users.length}`;
+
+  // Case-insensitive role filter
+  // const students = users.filter(u => u.role.toLowerCase() === "student");
+  // const faculty = users.filter(u => u.role.toLowerCase() === "faculty");
+  const students = users.filter(u => (u.role || "").trim().toLowerCase() === "student");
+  const faculty = users.filter(u => (u.role || "").trim().toLowerCase() === "faculty");
+
+
+  renderStudentTable(students);
+  renderFacultyTable(faculty);
+}
+
+// Render student table
+function renderStudentTable(students) {
+  if (students.length === 0) {
+    document.getElementById('studentTable').innerHTML = "<p>No students found.</p>";
+    return;
+  }
+
+  let html = `<table>
+    <thead>
+      <tr>
+        <th>S.No</th><th>Photo</th><th>Name</th><th>Email</th><th>Password</th><th>University/Institude</th>
+        <th>Course</th><th>Branch</th><th>Batch</th><th>Actions</th>
+      </tr>
+    </thead><tbody>`;
+
+  students.forEach((u, i) => {
+    html += `<tr>
+      <td>${i + 1}</td>
+      <td><img src = "${escapeHtml(u.photo)}" width=100px height=100px alt="photo" style="border-radius: 50%;" ></td>
+      <td>${escapeHtml(u.name)}</td>
+      <td>${escapeHtml(u.email)}</td>
+      <td id="pwd-student-${i}" data-password="${u.password}" data-show="false">
+        ${mask(u.password)}<br>
+        <button class="small" onclick="togglePassword('student', ${i})">Show/Hide</button>
+      </td>
+      <td>${escapeHtml(u.university || '')}</td>
+      <td>${escapeHtml(u.course || '')}</td>
+      <td>${escapeHtml(u.branch || '')}</td>
+      <td>${escapeHtml(u.batch || '')}</td>
+      <td>
+        <button class="small" onclick="deleteUserByEmail('${u.email}')" style="background:#d9534f;color:white">Delete</button>
+      </td>
+    </tr>`;
+  });
+
+  html += `</tbody></table>`;
+  document.getElementById('studentTable').innerHTML = html;
+}
+
+// Render faculty table
+function renderFacultyTable(faculty) {
+  if (faculty.length === 0) {
+    document.getElementById('facultyTable').innerHTML = "<p>No faculty found.</p>";
+    return;
+  }
+
+  let html = `<table>
+    <thead>
+      <tr>
+        <th>S.No</th><th>photo</th><th>Name</th><th>Email</th><th>Password</th><th>University/Institute</th><th>Actions</th>
+      </tr>
+    </thead><tbody>`;
+
+  faculty.forEach((u, i) => {
+    html += `<tr>
+      <td>${i + 1}</td>
+      <td><img src = "${escapeHtml(u.photo)}" width=100px height=100px alt="photo" style="border-radius: 50%;" ></td>
+      <td>${escapeHtml(u.name)}</td>
+      <td>${escapeHtml(u.email)}</td>
+      <td id="pwd-faculty-${i}" data-password="${u.password}" data-show="false">
+        ${mask(u.password)}<br>
+        <button class="small" onclick="togglePassword('faculty', ${i})">Show/Hide</button>
+      </td>
+      <td>${escapeHtml(u.university)||''}</td>
+      <td>
+        <button class="small" onclick="deleteUserByEmail('${u.email}')" style="background:#d9534f;color:white">Delete</button>
+      </td>
+    </tr>`
+
+  });
+
+  html += `</tbody></table>`;
+  document.getElementById('facultyTable').innerHTML = html;
+}
+
+// Mask password
+function mask(s) { return '*'.repeat(Math.min(8, s.length)) + ` (${s.length} chars)`; }
+
+// Toggle password
+function togglePassword(type, index) {
+  const el = document.getElementById(`pwd-${type}-${index}`);
+  if (!el) return;
+  const real = el.getAttribute('data-password');
+  if (el.getAttribute('data-show') === 'true') {
+    el.innerHTML = mask(real) + `<br><button class="small" onclick="togglePassword('${type}',${index})">Show/Hide</button>`;
+    el.setAttribute('data-show', 'false');
+  } else {
+    el.innerHTML = real + `<br><button class="small" onclick="togglePassword('${type}',${index})">Show/Hide</button>`;
+    el.setAttribute('data-show', 'true');
+  }
+}
+
+// Delete user
+function deleteUserByEmail(email) {
+  if (!confirm(`Delete user with email: ${email}?`)) return;
+  let users = getUsers();
+  users = users.filter(u => u.email !== email);
+  localStorage.setItem('users', JSON.stringify(users));
+  refreshUsers();
+}
+
+// Clear all
+function clearAllUsers() {
+  if (!confirm("Clear ALL users?")) return;
+  localStorage.removeItem('users');
+  refreshUsers();
+}
+
+// CSV & JSON export
+function exportJSON() {
+  const users = getUsers();
+  downloadFile('users.json', JSON.stringify(users, null, 2), 'application/json');
+}
+
+function exportCSV() {
+  const users = getUsers();
+  if (!users.length) { alert("No users"); return; }
+  const headers = ['name', 'email', 'password', 'role', 'course', 'branch', 'batch'];
+  const rows = users.map(u => headers.map(h => `"${(u[h] || '').toString().replace(/"/g, '""')}"`).join(','));
+  downloadFile('users.csv', headers.join(',') + '\n' + rows.join('\n'), 'text/csv');
+}
+
+// Download helper
+function downloadFile(fn, content, mime) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = fn; document.body.appendChild(a); a.click(); a.remove();
+}
+
+// Escape HTML
+function escapeHtml(text) {
+  if (!text) return '';
+  return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+}
+
+// Init
+refreshUsers();
+
+</script>
+
+
+

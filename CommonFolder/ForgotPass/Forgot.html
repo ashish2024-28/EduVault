@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="CommonFolder/LoginPage/common.css">
+    <link rel="stylesheet" href="Forgot.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="circle">
+            <img id="imgLogo" src="" alt="">
+        </div>
+        <span id="otpNote"></span>
+
+            <input id="email" type="email" name="Email" placeholder="Enter Institute's Email" class="input-field">
+
+            <input id="otp" type="text" name="OTP" placeholder="Enter OTP" class="input-field">
+            <input id="newPass" type="password" name="NewPass" placeholder="Enter New Password" class="input-field">
+
+            <button id="bt1" class="login-button" onclick="return Verify()">Verify</button>
+            <button id="bt2"  class="login-button" onclick="return generatOTP()">Resend OTP</button>
+            <button id="bt3" class="login-button" onclick="return verifyOTP()">Verify</button>
+            <button id="bt4" class="login-button" onclick="return ChangPass()">Submit</button>
+
+        </div>
+    </div>
+
+    <!-- js file -->
+    <script src="CommonFolder/LoginPage/common.js"></script>
+    <script src="Forgot.js"></script>
+
+</body>
+
+</html>

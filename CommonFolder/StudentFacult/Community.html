@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community & Services</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f3e5f5, #e1f5fe);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #00695c;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 1.8rem;
+      animation: slideDown 1.2s;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Service Card */
+    .card {
+      width: 280px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s, background 0.4s;
+      animation: zoomIn 1.5s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: #e0f2f1;
+    }
+
+    .card h3 {
+      color: #00695c;
+      margin-top: 0;
+    }
+
+    /* Add Service Form */
+    .add-box {
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      background: #f9fbe7;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      animation: fadeInUp 1.5s;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    textarea {
+      resize: none;
+    }
+    button {
+      background: #00695c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #004d40;
+    }
+
+    footer {
+      background: #212121;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      animation: fadeUp 2s;
+    }
+    footer a {
+      color: #ffcc80;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    🌍 Community & Services
+  </header>
+
+  <!-- Container -->
+  <div class="container" id="serviceContainer">
+    <!-- Example Past Service -->
+    <div class="card">
+      <h3>Beach Cleanup</h3>
+      <p><strong>Role:</strong> Volunteer</p>
+      <p><strong>Year:</strong> 2023</p>
+      <p>Helped organize a beach cleanup drive to promote environmental awareness.</p>
+    </div>
+    <div class="card">
+      <h3>Blood Donation Camp</h3>
+      <p><strong>Role:</strong> Organizer</p>
+      <p><strong>Year:</strong> 2024</p>
+      <p>Coordinated a college blood donation camp with 200+ participants.</p>
+    </div>
+  </div>
+
+  <!-- Add New Service Box -->
+  <div class="container">
+    <div class="add-box">
+      <h3>➕ Add Community Service</h3>
+      <input type="text" id="serviceName" placeholder="Service Name">
+      <input type="text" id="role" placeholder="Your Role">
+      <input type="number" id="year" placeholder="Year">
+      <textarea id="desc" rows="3" placeholder="Description"></textarea>
+      <button onclick="addService()">Add Service</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>📧 Email: <a href="mailto:community@college.com">community@college.com</a></p>
+    <p>📞 Contact: ‪+91 9876543210‬</p>
+    <p>&copy; 2025 Community & Services Portal</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    function addService() {
+      let name = document.getElementById("serviceName").value.trim();
+      let role = document.getElementById("role").value.trim();
+      let year = document.getElementById("year").value.trim();
+      let desc = document.getElementById("desc").value.trim();
+
+      if (name === "" || role === "" || year === "" || desc === "") {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      // Create new card
+      let newCard = document.createElement("div");
+      newCard.classList.add("card");
+      newCard.innerHTML = `
+        <h3>${name}</h3>
+        <p><strong>Role:</strong> ${role}</p>
+        <p><strong>Year:</strong> ${year}</p>
+        <p>${desc}</p>
+      `;
+
+      // Add to container
+      document.getElementById("serviceContainer").appendChild(newCard);
+
+      // Clear inputs
+      document.getElementById("serviceName").value = "";
+      document.getElementById("role").value = "";
+      document.getElementById("year").value = "";
+      document.getElementById("desc").value = "";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentorship</title>
+  <style>
+    #Faculty11,#Faculty22,#Faculty33,#Faculty44,#Faculty55,#Faculty66,#Faculty77,#Faculty88{
+      display: none;
+    }
+
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body style="background: linear-gradient(to right,#74ebd5, #9face6);" class="bg-gradient-to-r from-purple-200 via-pink-100 to-blue-200 min-h-screen flex flex-col items-center py-10">
+
+  <!-- Main Heading with Logo -->
+  <div class="flex items-center justify-center mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" 
+         alt="Mentorship Logo" 
+         class="w-12 h-12 mr-3">
+    <h1 class="text-4xl font-extrabold text-gray-800 drop-shadow-lg">Mentorship</h1>
+  </div>
+
+  <!-- Sub Heading -->
+  <h2 class="text-2xl font-semibold text-gray-700 mb-8">Available Teachers</h2>
+
+  <!-- Teachers Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 max-w-6xl">
+
+    <!-- Teacher 1 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/aadesh.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Dr. Aadesh K Arya </h3>
+      <p class="text-gray-600">10+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">Electrical Department</p>
+      <button id="Faculty1" class="mt-4 px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty11" class="mt-4 px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 2 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/arya.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Dr. Ravindra Arya</h3>
+      <p class="text-gray-600">10+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">MSC Mathematics</p>
+      <button id="Faculty2" class="mt-4 px-5 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty22" class="mt-4 px-5 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 3 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img3.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Ms. Neha Sharma</h3>
+      <p class="text-gray-600">5+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">Physics</p>
+      <button id="Faculty3" class="mt-4 px-5 py-2 bg-gradient-to-r from-pink-400 to-yellow-400 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty33" class="mt-4 px-5 py-2 bg-gradient-to-r from-pink-400 to-yellow-400 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 4 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img4.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Mr. Arvind Patel</h3>
+      <p class="text-gray-600">12+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">Chemistry</p>
+      <button id="Faculty4" class="mt-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-teal-400 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty44" class="mt-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-teal-400 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 5 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img5.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Dr. Priya Nair</h3>
+      <p class="text-gray-600">15+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">Biology</p>
+      <button id="Faculty5" class="mt-4 px-5 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty55" class="mt-4 px-5 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 6 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img6.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Prof. Sandeep Verma</h3>
+      <p class="text-gray-600">7+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">Economics</p>
+      <button id="Faculty6" class="mt-4 px-5 py-2 bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty66" class="mt-4 px-5 py-2 bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 7 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img7.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Ms. Kavita Singh</h3>
+      <p class="text-gray-600">6+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">English Literature</p>
+      <button id="Faculty7" class="mt-4 px-5 py-2 bg-gradient-to-r from-purple-400 to-indigo-500 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty77" class="mt-4 px-5 py-2 bg-gradient-to-r from-purple-400 to-indigo-500 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+    <!-- Teacher 8 -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300">
+      <img src="/items/img/img8.jpg" alt="Teacher" class="w-24 h-24 rounded-full mb-4 shadow-md">
+      <h3 class="text-xl font-bold text-gray-800">Dr. Rohit Malhotra</h3>
+      <p class="text-gray-600">9+ Years Experience</p>
+      <p class="text-indigo-500 font-medium">History</p>
+      <button id="Faculty8" class="mt-4 px-5 py-2 bg-gradient-to-r from-green-500 to-lime-400 text-white rounded-full shadow-md hover:shadow-xl transition">Send Request</button>
+      <button id="Faculty88" class="mt-4 px-5 py-2 bg-gradient-to-r from-green-500 to-lime-400 text-white rounded-full shadow-md hover:shadow-xl transition">Requested ✅</button>
+    </div>
+
+  </div>
+  <script src="Mentorship.js"></script>
+</body>
+</html>

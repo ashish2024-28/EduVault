@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Student Portfolio </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    body{
+      background: linear-gradient(to right, #74ebd5, #9face6);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+
+  <div class="bg-white w-[800px] p-10 rounded-2xl shadow-xl">
+    
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10 border-b-2 border-gray-300 pb-4">
+      <div class="w-24 h-24 rounded-full bg-gray-200 border-4 border-blue-500 overflow-hidden">
+        <!-- Profile Photo -->
+        <img id="previewPort" alt="Profile" class="w-full h-full object-cover">
+      </div>
+      <h1 class="text-4xl font-extrabold text-blue-600 tracking-wide">Portfolio</h1>
+      <i class='bx bx-book-bookmark text-4xl text-blue-500'></i>
+    </div>
+
+    <!-- Student Info -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800" id="name" >John Doe</h2>
+      <p class="text-gray-600" id="rb">Roll No: 024101010043 | Batch: 2024-2028</p>
+    </div>
+
+    <!-- Sections -->
+    <div class="grid grid-cols-2 gap-6">
+
+      <!-- Certifications -->
+      <div class="p-5 bg-gradient-to-r from-blue-100 to-blue-50 rounded-xl shadow-md hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-blue-700 flex items-center gap-2">
+          <i class='bx bxs-certification text-2xl text-blue-500'></i> Certifications
+        </h3>
+        <ul class="list-disc ml-6 mt-2 text-gray-700">
+          <li>Python Programming - Coursera</li>
+          <li>Web Development Bootcamp</li>
+          <li>AI & ML Workshop</li>
+        </ul>
+      </div>
+
+      <!-- Clubs -->
+      <div class="p-5 bg-gradient-to-r from-green-100 to-green-50 rounded-xl shadow-md hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-green-700 flex items-center gap-2">
+          <i class='bx bx-group text-2xl text-green-500'></i> Clubs
+        </h3>
+        <ul class="list-disc ml-6 mt-2 text-gray-700">
+          <li>Technical Club - Core Member</li>
+          <li>Drama Club - Actor</li>
+          <li>Robotics Club - Project Lead</li>
+        </ul>
+      </div>
+
+      <!-- Conferences -->
+      <div class="p-5 bg-gradient-to-r from-purple-100 to-purple-50 rounded-xl shadow-md hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-purple-700 flex items-center gap-2">
+          <i class='bx bx-podcast text-2xl text-purple-500'></i> Conferences
+        </h3>
+        <ul class="list-disc ml-6 mt-2 text-gray-700">
+          <li>National AI Summit 2024</li>
+          <li>Cyber Security Meet 2023</li>
+          <li>Blockchain Future Conference</li>
+        </ul>
+      </div>
+
+      <!-- Workshops -->
+      <div class="p-5 bg-gradient-to-r from-pink-100 to-pink-50 rounded-xl shadow-md hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-pink-700 flex items-center gap-2">
+          <i class='bx bx-chalkboard text-2xl text-pink-500'></i> Workshops
+        </h3>
+        <ul class="list-disc ml-6 mt-2 text-gray-700">
+          <li>Cloud Computing Hands-on</li>
+          <li>Ethical Hacking Training</li>
+          <li>Design Thinking Workshop</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    window.onload = function () {
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) return;
+
+  if (currentUser.photo) {
+  
+    document.getElementById("previewPort").src = currentUser.photo;
+    document.getElementById("name").innerHTML = currentUser.name;
+    if(currentUser.role == "faculty"){
+    document.getElementById("rb").style.display = "none";
+    }
+  }
+};
+
+  </script>
+
+
+</body>
+</html>

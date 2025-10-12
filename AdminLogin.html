@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient-start: #5fffff;
+            --primary-gradient-end: #5fffff;
+            --secondary-gradient-start: #7111cb;
+            --secondary-gradient-end: #7111cb;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #333;
+            --light-text: #f0f0f0;
+            --input-border: #ccc;
+            --input-focus: var(--secondary-gradient-end);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .background-anim {
+
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: moveBackground 20s infinite alternate;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 0%, 100% 100%; }
+            100% { background-position: 100% 100%, 0% 0%; }
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 10;
+            perspective: 1000px;
+        }
+
+        .login-box {
+            background:linear-gradient(to right, #74ebd5, #9face6);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            width: 380px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: rotateY(0deg) scale(1);
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .login-box:hover {
+            transform: rotateY(3deg) scale(1.03);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(45deg, var(--secondary-gradient-start), var(--primary-gradient-start));
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        /* Replace with your actual logo image or icon */
+        .logo i { /* If you want to use a Font Awesome icon as logo */
+            color: #fff;
+            font-size: 3.5em;
+        }
+        .logo img { /* If you want to use an image as logo */
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            border-radius: 50%; /* If your image is square and you want it circular */
+        }
+
+
+        .login-title {
+            font-weight: 700;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--secondary-gradient-start), var(--secondary-gradient-end));
+             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .login-subtitle {
+            font-weight: 400;
+            color: var(--subtle-text);
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 35px;
+            animation: slideInUp 0.8s ease-out backwards;
+            animation-delay: 0.3s;
+        }
+        .input-group:nth-of-type(2) { /* Targeting the second input group (password) */
+            animation-delay: 0.5s;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px 15px;
+            font-size: 1.1em;
+            border: none;
+            border-bottom: 2px solid var(--input-border);
+            background: rgba(255, 255, 255, 0.7);
+            outline: none;
+            border-radius: 5px 5px 0 0;
+            transition: border-bottom 0.3s ease, background 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .input-group input:focus {
+            border-bottom: 3px solid var(--input-focus);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 18px;
+            left: 15px;
+            color: #999;
+            pointer-events: none;
+            transition: 0.3s ease-out;
+            font-size: 1.1em;
+            background-color: transparent; /* Ensure label background doesn't interfere */
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown):valid + label, /* Use :valid for required fields */
+        .input-group input:not([value=""]) + label { /* Fallback for pre-filled values */
+            top: -12px;
+            font-size: 0.85em;
+            color: var(--secondary-gradient-end);
+            background-color: var(--card-bg);
+            padding: 0 5px;
+            border-radius: 3px;
+            left: 10px; /* Adjust label position when moved up */
+        }
+
+        /* Password Toggle Icon */
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            z-index: 1; /* Make sure it's above the input */
+        }
+
+        .password-toggle:hover {
+            color: var(--secondary-gradient-end);
+        }
+
+
+        .login-button {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--light-text);
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 0.8s ease-out backwards;
+            animation-delay: 0.7s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #7c24dc, #3e88ff);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="background-anim"></div>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-user-shield"></i> </div>
+                </div>
+
+            <h1 class="login-title">Admin Login</h1>
+            <p class="login-subtitle">Access your administrative dashboard</p>
+            <form class="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" required autofocus>
+                    <label for="username">Admin ID</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                    <i class="password-toggle fas fa-eye" id="togglePassword"></i>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login Form Submission
+            document.querySelector('.login-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const loginButton = document.querySelector('.login-button');
+                const originalButtonText = loginButton.innerHTML;
+                
+                loginButton.innerHTML = '<span class="spinner"></span> Logging in...';
+                loginButton.disabled = true;
+                loginButton.style.opacity = '0.7';
+                loginButton.style.cursor = 'not-allowed';
+
+                setTimeout(() => {
+                    loginButton.innerHTML = originalButtonText;
+                    loginButton.disabled = false;
+                    loginButton.style.opacity = '1';
+                    loginButton.style.cursor = 'pointer';
+                    
+                    let email = document.getElementById("username")
+                    let password = document.getElementById("password")
+                    if(email.value === "ashish9693" && password.value === "ashish9693"){
+                        alert('Admin Login Successfuly!');
+                        // window.location.reload("/Common Folder/LoginPage/StoreData.js");
+                        window.location.replace("Admin.html");
+                    }
+                }, 2500);
+            });
+
+            // Password Toggle Functionality
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+
+            if (togglePassword && password) { // Check if elements exist
+                togglePassword.addEventListener('click', function() {
+                    // Toggle the type attribute
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    
+                    // Toggle the eye icon
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            }
+
+            // Input label animation fix for pre-filled inputs
+            document.querySelectorAll('.input-group input').forEach(input => {
+                input.addEventListener('input', () => {
+                    // This listener is mostly for dynamic changes, CSS handles initial state and focus
+                });
+                // Check on load if the input already has a value (e.g., from browser autofill)
+                if (input.value !== '') {
+                    input.classList.add('has-value'); // Add a class if needed, though CSS :not(:placeholder-shown) works well
+                }
+            });
+        });
+    </script>
+</body>
+</html>

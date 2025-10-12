@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clubs & Volunteering</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e1f5fe, #ede7f6);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #4a148c;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 1.8rem;
+      animation: slideDown 1.2s;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 280px;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s, background 0.4s;
+      animation: zoomIn 1.5s;
+    }
+    .box:hover {
+      transform: scale(1.03);
+      background: #f3e5f5;
+    }
+
+    h3 {
+      text-align: center;
+      color: #4a148c;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #ede7f6;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #4a148c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #311b92;
+    }
+
+    footer {
+      background: #212121;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      animation: fadeUp 2s;
+    }
+    footer a {
+      color: #ffcc80;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🎓 Clubs & Volunteering
+  </header>
+
+  <div class="container">
+    <!-- Past Records -->
+    <div class="box">
+      <h3>📜 Past Club Records</h3>
+      <table id="clubTable">
+        <tr>
+          <th>Club Name</th>
+          <th>Role</th>
+        </tr>
+        <tr>
+          <td>Music Club</td>
+          <td>Member</td>
+        </tr>
+        <tr>
+          <td>Dance Club</td>
+          <td>Volunteer</td>
+        </tr>
+        <tr>
+          <td>Coding Club</td>
+          <td>Member</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Add New Club -->
+    <div class="box">
+      <h3>➕ Join a New Club</h3>
+      <input type="text" id="clubName" placeholder="Enter Club Name">
+      <input type="text" id="role" placeholder="Enter your role (e.g. Member, Volunteer)">
+      <button onclick="addClub()">Add Club</button>
+    </div>
+  </div>
+
+  <footer >
+    <p>📧 Email: <a href="mailto:clubs@college.com">clubs@college.com</a></p>
+    <p>📞 Contact: ‪+91 9876543210‬</p>
+    <p>&copy; 2025 Student Clubs & Volunteering Portal</p>
+  </footer>
+
+  <script>
+    function addClub() {
+      let clubName = document.getElementById("clubName").value.trim();
+      let role = document.getElementById("role").value.trim();
+
+      if (clubName === "" || role === "") {
+        alert("Please fill both fields!");
+        return;
+      }
+
+      let table = document.getElementById("clubTable");
+      let newRow = table.insertRow();
+      let cell1 = newRow.insertCell(0);
+      let cell2 = newRow.insertCell(1);
+      cell1.innerHTML = clubName;
+      cell2.innerHTML = role;
+
+      // Clear inputs after adding
+      document.getElementById("clubName").value = "";
+      document.getElementById("role").value = "";
+    }
+  </script>
+
+</body>
+</html>

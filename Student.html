@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile</title>
+  
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fc, #eef2f7);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      gap: 12px;
+    }
+
+    /* Header */
+    .header {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      animation: slideDown 1.2s ease-out;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Layout grid */
+    .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      flex: 1;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #2c3e50, #4ca1af);
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 0 20px 20px 0;
+    }
+
+    /* Profile */
+    .profile {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1);
+    }
+
+    .profile h2 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #ecf0f1;
+    }
+
+    .profile p {
+      margin: 0;
+      font-size: 14px;
+      color: #dcdde1;
+      overflow: hidden;
+    }
+    .profile p:hover{
+      overflow: visible;
+    }
+
+    .contact {
+      font-size: 13px;
+      margin-top: 10px;
+      color: #f1f2f6;
+    }
+
+
+    /* Logout */
+    .logout {
+      text-align: center;
+    }
+
+    .logout button {
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+      /* margin-bottom: 12px; */
+    }
+
+    .logout button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+.portfolio button:hover{
+   
+      opacity: 0.9;
+      transform: scale(1.05);
+    
+}
+    /* Main */
+    .main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+      gap: 20px;
+      align-items: stretch;
+      grid-auto-rows: 1fr; /* equal row height */
+    }
+
+    .card {
+      background: white;
+      border-radius: 30px;
+      padding: 20px;
+      margin: 10px 0px;
+      overflow-x: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;   /* center horizontally */
+      text-align: center;    /* center text */
+      height: 80%;
+    }
+
+    .card:nth-child(1) { background: linear-gradient(135deg,#f6d365,#fda085); }
+    .card:nth-child(2) { background: linear-gradient(135deg,#84fab0,#8fd3f4); }
+    .card:nth-child(3) { background: linear-gradient(135deg,#fccb90,#d57eeb); }
+    .card:nth-child(4) { background: linear-gradient(135deg,#f6d365,#fda085); }
+    .card:nth-child(5) { background: linear-gradient(135deg,#84fab0,#8fd3f4); }
+    .card:nth-child(6) { background: linear-gradient(135deg,#fccb90,#d57eeb); }
+    .card:nth-child(7) { background: linear-gradient(135deg,#f6d365,#fda085); }
+    .card:nth-child(8) { background: linear-gradient(135deg,#84fab0,#8fd3f4); }
+    .card:nth-child(9) { background: linear-gradient(135deg,#fccb90,#d57eeb); }
+    
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .main {
+        grid-template-columns: 1fr; /* 1 per row on phones */
+      }
+      .sidebar {
+        border-radius: 0;
+      }
+    }
+
+    #photoInput{
+      display: none;
+    }
+    
+
+  </style>
+
+
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">EDUVAULT</div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div>
+        <!-- Profile -->
+        <div class="profile">
+          <img id="preview" src="#" >
+          <input type="file" id="photoInput" required autofocus>
+
+          <!-- name -->
+          <h2 id="Name"></h2>
+          <!-- number  email -->
+          <div class="contact">
+            <p id="Email"></p>
+            <!-- <p> 91+ <span id="mobileNo"><input type="tel" maxlength="10"></span> </p> -->
+            <p><span>Course : </span><span id="Course"></span></p>
+            <p><span>Branch : </span><span id="Branch"></span></p>
+            <p><span>Batch : </span><span id="Batch"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="logout">
+        <button id="Ptfl">Portfolio</button>  
+       <!-- Logout -->
+        <button id="Logout">Logout</button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="card" id="conferences" onclick="Certification()" >
+        <h3>Conferences & Workshops</h3>
+        <p>Attended national and international workshops.</p>
+      </div>
+
+      <div class="card" id="certifications">
+        <h3>Certifications</h3>
+        <p>Earned certifications from online platforms.</p>
+      </div>
+
+      <div class="card" id="clubs">
+        <h3>Clubs & Volunteering</h3>
+        <p>Active in coding club and volunteering.</p>
+      </div>
+
+      <div class="card" id="competitions">
+        <h3>Competitions</h3>
+        <p>Participated in hackathons and contests.</p>
+      </div>
+
+      <div class="card" id="Mentorship">
+        <h3>Mentorship</h3>
+        <p>Mentors for help and guidence.</p>
+      </div>
+
+      <div class="card" id="community">
+        <h3>Community Service</h3>
+        <p>Contributed to social initiatives and drives.</p>
+      </div>
+
+      <div class="card" id="courses">
+        <h3>Courses</h3>
+        <p>Learn and explore learning.</p>
+      </div>
+
+      <div class="card" id="support">
+        <h3>Help / support</h3>
+        <p>Support 24 X 7.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 EDUVALT. All rights reserved.
+  </footer>
+
+  <!-- js file -->
+  <script src="CommonFolder/LoginPage/common.js"></script>
+  <script>
+
+
+
+// left
+
+// portfolio
+document.getElementById("Ptfl").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/portfolio.htm";
+})
+
+
+
+
+// Logout
+document.getElementById("Logout").addEventListener("click", () => {
+  // Clear local/session storage (optional)
+  // localStorage.clear();
+  sessionStorage.clear();
+
+  // Redirect to homepage without saving in history
+  window.location.replace("index.htm");
+});
+
+// 
+// for profile image
+const preview = document.getElementById("preview");
+const photoInput = document.getElementById("photoInput");
+
+// Hide input by default
+photoInput.style.display = "none";
+
+// 1. Show input on double click
+preview.addEventListener("dblclick", () => {
+  photoInput.style.display = "block";
+  photoInput.click(); // Optional: directly open file dialog
+});
+
+// 2. Update image when file selected
+photoInput.addEventListener("change", function(){
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      // updatserData(user.email,preview.src);
+      preview.src = e.target.result;
+
+    };
+    reader.readAsDataURL(file);
+  }
+  photoInput.style.display = "none"; // Hide after selection
+});
+
+// 3. Hide input if clicked outside
+document.addEventListener("click", function (event) {
+  if (photoInput.style.display === "block") {
+    if (!photoInput.contains(event.target) && event.target !== preview) {
+      photoInput.style.display = "none";
+    }
+  }
+});
+
+// 
+
+function updateUserData(email, extraData) {
+  // Get all users
+  let users = JSON.parse(localStorage.getItem("user")) || [];
+
+  // Find user by email
+  let userIndex = users.findIndex(u => u.email === email);
+  if (userIndex === -1) {
+    alert("User not found!");
+    return;
+  }
+
+  // Merge new data into existing user
+  users[userIndex] = { ...users[userIndex], ...extraData };
+
+  // Save back to localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("User info updated successfully!");
+}
+
+// 
+
+// right
+
+document.getElementById("conferences").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/ConferenceWorkshop.html";
+})
+
+document.getElementById("certifications").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/CertificatAchievement.html";
+})
+
+document.getElementById("clubs").addEventListener("click", () => {
+  window.location.href = "studentInfoPage/Clubs.html";
+})
+
+document.getElementById("competitions").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/competition.html";
+})
+
+document.getElementById("Mentorship").addEventListener("click", () => {
+  window.location.href = "studentInfoPage/Mentorship.htm";
+})
+
+document.getElementById("community").addEventListener("click",()=>{
+  window.location.href = "CommonFolder/StudentFacult/Community.html";
+})
+
+document.getElementById("courses").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/Course.htm";
+})
+
+document.getElementById("support").addEventListener("click", () => {
+  window.location.href = "CommonFolder/StudentFacult/Support.html";
+})
+
+
+
+function loadProfileStudent() {
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) return;
+  document.getElementById("Name").innerText = currentUser.name;
+  document.getElementById("Email").innerText = currentUser.email;
+  document.getElementById("Course").innerText = currentUser.course;
+  document.getElementById("Branch").innerText = currentUser.branch;
+  document.getElementById("Batch").innerText = currentUser.batch;
+
+  if (currentUser.photo) {
+    document.getElementById("preview").src = currentUser.photo;
+    document.getElementById("previewPort").src = currentUser.photo;
+  }
+};
+
+
+
+
+
+  </script>
+    <script>
+      window.onload = loadProfileStudent;
+    </script>
+</body>
+</html>
