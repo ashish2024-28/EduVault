@@ -91,7 +91,7 @@
 
 
 <!-- link js file  -->
-<script src="CommonFolder/LoginPage/common.js"></script>
+<script src="/CommonFolder/LoginPage/common.js"></script>
 <script>
 
 let generatedOTP = null;
@@ -181,9 +181,9 @@ function verifyOTP() {
 
 function redirectByRole(role) {
   if (role === "faculty") {
-    window.location.href = "FacultyLogin/loginPage.html";
+    window.location.href = "loginPage.html";
   } else if (role === "student") {
-    window.location.href = "StudentLogin/loginPage.html";
+    window.location.href = "loginPage.html";
   } else {
     window.location.href = "/";
   }
