@@ -15,7 +15,7 @@ saveUser(user1);
 
 let user2 = {
   name: "Aryan Raj",
-  photo: "/items/img/Aryan.jpg",
+  photo: "items/img/Aryan.jpg",
   email: "aryan1.bcse2024@huroorkee.ac.in",
   password: "aryan",
   university: "Haridwar University",
@@ -29,7 +29,7 @@ saveUser(user2);
 
 let user3 = {
   name: "Abhay Tiwari",
-  photo: "/items/img/Abhay.jpg",
+  photo: "items/img/Abhay.jpg",
   email: "abhaytiwari.bcse2024@huroorkee.ac.in",
   password: "abhay",
   university: "Haridwar University",
@@ -43,7 +43,7 @@ saveUser(user3);
 
 let user4 = {
   name: "Khushi",
-  photo: "/items/img/khushi.jpg",
+  photo: "items/img/khushi.jpg",
   email: "khushi.bcse2024@huroorkee.ac.in",
   password: "khushi",
   university: "Haridwar University",
@@ -57,7 +57,7 @@ saveUser(user4);
 
 let user5 = {
   name: "Arpna Chaudhari",
-  photo: "/items/img/arpna.jpg",
+  photo: "items/img/arpna.jpg",
   email: "arpna.bcse2024@huroorkee.ac.in",
   password: "arpna",
   university: "Haridwar University",
@@ -71,7 +71,7 @@ saveUser(user5);
 
 let user6 = {
   name: "Dev Singh",
-  photo: "/items/img/dev.jpg",
+  photo: "items/img/dev.jpg",
   email: "devsingh.bcse2024@huroorkee.ac.in",
   password: "DevSingh",
   university: "Haridwar University",
@@ -88,7 +88,7 @@ saveUser(user6);
 //  faculty data
 let userf1 = {
   name: "Aadesh Arya",
-  photo: "/items/img/aadesh.jpg",
+  photo: "items/img/aadesh.jpg",
   email: "adeshkarya.@huroorkee.ac.in",
   password: "adesh",
   university: "Haridwar University",
@@ -98,7 +98,7 @@ saveUser(userf1);
 
 let userf2 = {
   name: "Ravindra Arya",
-  photo: "/items/img/arya.jpg",
+  photo: "items/img/arya.jpg",
   email: "ravindarya.@huroorkee.ac.in",
   password: "ravindra",
   university: "Haridwar University",
