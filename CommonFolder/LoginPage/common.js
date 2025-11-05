@@ -3,7 +3,7 @@
 
 // Logo 
 let imgLogo = document.getElementById("imgLogo");
-imgLogo.src = "items/logo.jpg";
+imgLogo.src = "/items/logo.jpg";
 imgLogo.style.width = "150px";
 function checkLogin() {
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();

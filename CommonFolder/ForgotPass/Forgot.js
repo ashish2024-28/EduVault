@@ -15,7 +15,7 @@ function ChangPass() {
         localStorage.setItem("users", JSON.stringify(users));
         alert("Password updated successfully!");
         // Redirect to homepage without saving in history
-        window.location.replace("StudentLogin/loginPage.html");
+        window.location.replace("loginPage.html");
     } else {
         alert("User not found.");
     }
